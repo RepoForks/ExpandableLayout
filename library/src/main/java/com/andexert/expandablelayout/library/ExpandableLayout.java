@@ -42,6 +42,7 @@ public class ExpandableLayout extends RelativeLayout
     private FrameLayout contentLayout;
     private FrameLayout headerLayout;
     private Animation animation;
+    private Animation.AnimationListener listener;
 
     public ExpandableLayout(Context context)
     {
@@ -136,6 +137,7 @@ public class ExpandableLayout extends RelativeLayout
             }
         };
         animation.setDuration(duration);
+        animation.setAnimationListener(listener);
         v.startAnimation(animation);
     }
 
@@ -164,6 +166,7 @@ public class ExpandableLayout extends RelativeLayout
         };
 
         animation.setDuration(duration);
+        animation.setAnimationListener(listener);
         v.startAnimation(animation);
     }
 
@@ -218,6 +221,6 @@ public class ExpandableLayout extends RelativeLayout
 
     @Override
     public void setLayoutAnimationListener(Animation.AnimationListener animationListener) {
-        animation.setAnimationListener(animationListener);
+        listener=animationListener;
     }
 }
